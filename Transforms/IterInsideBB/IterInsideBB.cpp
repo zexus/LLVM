@@ -14,16 +14,22 @@ namespace {
 
     bool runOnFunction(Function &Func) override {
         errs() << "Function name: " << Func.getName() << "\n";
+        // ------------------------------------------------------------------------
         for (Function::iterator BB=Func.begin(), E=Func.end(); BB!=E; ++BB) {
             errs() << "Basic block name: " << BB->getName() << ", has "
                 << BB->size() << " instuctions.\n";
-            for(BasicBlock::iterator IN=BB->begin(), EN=BB->end(); IN!=EN; ++IN) {
-                errs() << *IN << "\n";
-            }
+            // for(BasicBlock::iterator IN=BB->begin(), EN=BB->end(); IN!=EN; ++IN) {
+            //     errs() << *IN << "\n";
+            // }
+        }
+        // ------------------------------------------------------------------------
+        for (BasicBlock &BasicBlock : Func) {
+            errs() << "Block name: " << BasicBlock.getName() << ", has "
+                << BasicBlock.size() << " instructions.\n";
         }
         return false;
-    }
-  };
+        }
+    };
 }
 
 char IterInsideBB::ID = 0;
