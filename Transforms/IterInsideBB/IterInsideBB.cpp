@@ -24,13 +24,18 @@ namespace {
         //     }
         // }
         // ------------------------------------------------------------------------
-        for (BasicBlock &BB : Func) {
-            errs() << "Block name: " << BB.getName() << ", has "
-                << BB.size() << " instructions.\n";
-            for (Instruction &I : BB) {
-                errs() << I << "\n";
-            }
+        // for (BasicBlock &BB : Func) {
+        //     errs() << "Block name: " << BB.getName() << ", has "
+        //         << BB.size() << " instructions.\n";
+        //     for (Instruction &I : BB) {
+        //         errs() << I << "\n";
+        //     }
+        // }
+        // ------------------------------------------------------------------------
+        for (inst_iterator I = inst_begin(Func), E = inst_end(Func); I != E; ++I) {
+            errs() << *I << "\n";
         }
+        // ------------------------------------------------------------------------
         return false;
         }
     };
